@@ -34,6 +34,27 @@ export const AssignmentDashboard: React.FC<Props> = ({ onSelectAssignment }) => 
       ],
       onPress: () => onSelectAssignment('assignment1'),
     },
+    {
+      id: 'assignment2',
+      title: 'Assignment 2: Event Registration',
+      description: 'Interactive registration form with input masking, conditional fields, and async loading states.',
+      keyFiles: [
+        'src/assignment2/presentation/viewModels/useRegistrationViewModel.ts',
+        'src/assignment2/presentation/components/organisms/RegistrationForm.tsx',
+        'src/assignment2/presentation/pages/EventRegistrationPage.tsx',
+        'src/assignment2/README.md',
+      ],
+      onPress: () => onSelectAssignment('assignment2'),
+    },
+    {
+      id: 'assignment3',
+      title: 'Assignment 3: Profile Wizard (Advanced)',
+      description: 'Complexity study involving multi-step wizard, dynamic arrays, and MMKV state persistence.',
+      keyFiles: [
+        'src/assignment3/README.md',
+      ],
+      onPress: () => onSelectAssignment('assignment3'),
+    },
   ];
 
   return (

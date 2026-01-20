@@ -11,17 +11,25 @@ import React, { useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AssignmentDashboard } from './src/presentation/pages/AssignmentDashboard';
 import { ContactUsPage } from './src/assignment1/presentation/pages/ContactUsPage';
+import { EventRegistrationPage } from './src/assignment2/presentation/pages/EventRegistrationPage';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'dashboard' | 'assignment1'>('dashboard');
+  const [currentPage, setCurrentPage] = useState<'dashboard' | 'assignment1' | 'assignment2'>('dashboard');
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'assignment1':
+        return <ContactUsPage onBack={() => setCurrentPage('dashboard')} />;
+      case 'assignment2':
+        return <EventRegistrationPage onBack={() => setCurrentPage('dashboard')} />;
+      default:
+        return <AssignmentDashboard onSelectAssignment={(id) => setCurrentPage(id as any)} />;
+    }
+  };
 
   return (
     <SafeAreaProvider>
-      {currentPage === 'dashboard' ? (
-        <AssignmentDashboard onSelectAssignment={() => setCurrentPage('assignment1')} />
-      ) : (
-        <ContactUsPage onBack={() => setCurrentPage('dashboard')} />
-      )}
+      {renderPage()}
     </SafeAreaProvider>
   );
 }

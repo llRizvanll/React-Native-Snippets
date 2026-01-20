@@ -7,32 +7,22 @@
 
 import { NewAppScreen } from '@react-native/new-app-screen';
 import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import React, { useState } from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { AssignmentDashboard } from './src/presentation/pages/AssignmentDashboard';
+import { ContactUsPage } from './src/assignment1/presentation/pages/ContactUsPage';
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+  const [currentPage, setCurrentPage] = useState<'dashboard' | 'assignment1'>('dashboard');
 
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
+      {currentPage === 'dashboard' ? (
+        <AssignmentDashboard onSelectAssignment={() => setCurrentPage('assignment1')} />
+      ) : (
+        <ContactUsPage onBack={() => setCurrentPage('dashboard')} />
+      )}
     </SafeAreaProvider>
-  );
-}
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
   );
 }
 

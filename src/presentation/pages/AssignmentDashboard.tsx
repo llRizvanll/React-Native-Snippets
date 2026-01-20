@@ -1,0 +1,153 @@
+import React from 'react';
+import {
+  SafeAreaView,
+  StyleSheet,
+  View,
+  ScrollView,
+  TouchableOpacity,
+  Text,
+} from 'react-native';
+
+interface AssignmentLink {
+  id: string;
+  title: string;
+  description: string;
+  keyFiles: string[];
+  onPress: () => void;
+}
+
+interface Props {
+  onSelectAssignment: (id: string) => void;
+}
+
+export const AssignmentDashboard: React.FC<Props> = ({ onSelectAssignment }) => {
+  const assignments: AssignmentLink[] = [
+    {
+      id: 'assignment1',
+      title: 'Assignment 1: Contact Form',
+      description: 'A professional contact form with validation using Clean Architecture, MVVM, and Atomic Design.',
+      keyFiles: [
+        'src/assignment1/core/useCases/SubmitContactUseCase.ts',
+        'src/assignment1/presentation/viewModels/useContactViewModel.ts',
+        'src/assignment1/presentation/pages/ContactUsPage.tsx',
+        'src/assignment1/README.md',
+      ],
+      onPress: () => onSelectAssignment('assignment1'),
+    },
+  ];
+
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView contentContainerStyle={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.title}>Interview Practice Hub</Text>
+          <Text style={styles.subtitle}>Select an assignment to view the implementation and execution.</Text>
+        </View>
+
+        {assignments.map(item => (
+          <TouchableOpacity
+            key={item.id}
+            style={styles.card}
+            onPress={item.onPress}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.cardTitle}>{item.title}</Text>
+            <Text style={styles.cardDescription}>{item.description}</Text>
+            
+            <View style={styles.fileSection}>
+              <Text style={styles.fileHeader}>Key Files to Open:</Text>
+              {item.keyFiles.map((file, index) => (
+                <Text key={index} style={styles.filePath}>• {file}</Text>
+              ))}
+            </View>
+            
+            <View style={styles.viewBadge}>
+              <Text style={styles.viewText}>Execute Output →</Text>
+            </View>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
+
+const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#F8F9FA',
+  },
+  container: {
+    padding: 20,
+  },
+  header: {
+    marginBottom: 30,
+    marginTop: 10,
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: '800',
+    color: '#1A1A1A',
+  },
+  subtitle: {
+    fontSize: 16,
+    color: '#666',
+    marginTop: 8,
+    lineHeight: 22,
+  },
+  card: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
+    padding: 20,
+    marginBottom: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    elevation: 3,
+    borderWidth: 1,
+    borderColor: '#EEE',
+  },
+  cardTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+    color: '#6200EE',
+  },
+  cardDescription: {
+    fontSize: 14,
+    color: '#444',
+    marginTop: 10,
+    lineHeight: 20,
+  },
+  fileSection: {
+    marginTop: 16,
+    backgroundColor: '#F0F0F0',
+    padding: 12,
+    borderRadius: 8,
+  },
+  fileHeader: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: '#333',
+    marginBottom: 6,
+    textTransform: 'uppercase',
+  },
+  filePath: {
+    fontSize: 12,
+    color: '#555',
+    fontFamily: 'Courier', // Using default system mono if available
+    marginBottom: 2,
+  },
+  viewBadge: {
+    marginTop: 20,
+    alignSelf: 'flex-end',
+    backgroundColor: '#6200EE',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 20,
+  },
+  viewText: {
+    color: '#FFFFFF',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+});

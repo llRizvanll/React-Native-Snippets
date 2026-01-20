@@ -3,28 +3,29 @@
 ## Problem Statement
 Build a high-performance "Social Media Feed" that lists posts with images, text, and interactions (likes, comments). This assignment focuses on optimization techniques for large lists and handling complex UI states in React Native.
 
-### Requirements:
+## Technical Explanation: How we achieved 60FPS
 
-#### 1. Data Handling
-- **Mock Service**: Create a service that generates a list of 100+ posts.
-- **Infinite Scroll**: Implement "Load More" functionality as the user scrolls to the bottom.
-- **Pull-to-Refresh**: Allow users to refresh the feed.
+To maintain high performance in a heavy list like a social feed, we implemented the following strategies:
 
-#### 2. Performance Optimization
-- **FlatList Optimization**: Use `memo`, `keyExtractor`, and `getItemLayout` (if fixed height) or `initialNumToRender` and `windowSize` to ensure 60fps scrolling.
-- **Image Optimization**: Use a strategy for efficient image rendering (e.g., placeholder, caching, or resized images if using a real API).
+### 1. FlatList Configuration
+- **`windowSize={5}`**: Reduces memory usage by keeping only a small number of screens (off-screen) rendered.
+- **`initialNumToRender={5}`**: Ensures the first meaningful paint is fast.
+- **`maxToRenderPerBatch={10}`**: Prevents the JS thread from being blocked by rendering too many items at once.
+- **`getItemLayout`**: Bypasses dynamic layout measurement, which is expensive.
+- **`removeClippedSubviews={true}`**: Helps in memory management by unmounting components that are completely off-screen.
 
-#### 3. Features
-- **Search & Filter**: Add a search bar to filter posts by username or content.
-- **Post Interaction**: Implement "Like" and "Comment" buttons with immediate UI feedback (Optimistic updates).
-- **Video Support**: (Optional/Bonus) Add support for video posts that auto-play when in view.
+### 2. Memoization Strategy
+- **`React.memo` with custom comparison**: The `PostCard` component only re-renders if its specific data (likes, content) changes.
+- **`useCallback`**: All event handlers (like `onLike`) are wrapped in `useCallback` to prevent property reference changes onEvery render.
 
-#### 4. Architecture
-- **Clean Architecture**: Decouple the UI from the data fetching logic.
-- **Performance Patterns**: Demonstrate the use of `useCallback` and `useMemo` to prevent unnecessary re-renders in list items.
+### 3. State Management (MVVM)
+- **ViewModel Logic**: Pagination and filtering are handled in `useSocialFeedViewModel`. 
+- **Optimistic Updates**: When a user clicks "Like", the UI updates immediately before any "mock API" call completes, providing a snappy user experience.
 
-## Technical Goals
-- Mastering `FlatList` performance.
-- Handling asynchronous data streams and pagination.
-- Implementing robust search and filtering on the client-side.
-- Managing complex state for individual list items.
+---
+
+## How to achieve this quickly?
+1. **Reuse Pattern**: Consistently use the Atomic Design + MVVM pattern. Once established, adding new features (like comments) is just adding a new Atom/Molecule.
+2. **Stable Keys**: Always use a unique, stable `id` for `keyExtractor`. Avoid using `index`.
+3. **Avoid Inline Functions**: Never define arrow functions inside `renderItem`. Always use `useCallback`.
+

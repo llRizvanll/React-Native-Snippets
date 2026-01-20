@@ -58,6 +58,27 @@ export const AssignmentDashboard: React.FC<Props> = ({ onSelectAssignment }) => 
       ],
       onPress: () => onSelectAssignment('assignment3'),
     },
+    {
+      id: 'assignment4',
+      title: 'Assignment 4: High-Performance Feed',
+      description: 'Optimization study for large lists, image caching, and optimistic UI updates for 60FPS scrolling.',
+      keyFiles: [
+        'src/assignment4/presentation/viewModels/SocialFeedViewModel.ts',
+        'src/assignment4/presentation/pages/SocialFeedPage.tsx',
+        'src/assignment4/presentation/components/organisms.tsx',
+        'src/assignment4/README.md',
+      ],
+      onPress: () => onSelectAssignment('assignment4'),
+    },
+    {
+      id: 'assignment5',
+      title: 'Assignment 5: Advanced UI & Micro-interactions',
+      description: 'Mastering Layout Animations and Gesture-based interactions.',
+      keyFiles: [
+        'src/assignment5/README.md',
+      ],
+      onPress: () => onSelectAssignment('assignment5'),
+    },
   ];
 
   return (

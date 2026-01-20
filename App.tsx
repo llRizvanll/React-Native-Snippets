@@ -12,9 +12,10 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AssignmentDashboard } from './src/presentation/pages/AssignmentDashboard';
 import { ContactUsPage } from './src/assignment1/presentation/pages/ContactUsPage';
 import { EventRegistrationPage } from './src/assignment2/presentation/pages/EventRegistrationPage';
+import { ProfileWizardPage } from './src/assignment3/presentation/pages/ProfileWizardPage';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<'dashboard' | 'assignment1' | 'assignment2'>('dashboard');
+  const [currentPage, setCurrentPage] = useState<'dashboard' | 'assignment1' | 'assignment2' | 'assignment3'>('dashboard');
 
   const renderPage = () => {
     switch (currentPage) {
@@ -22,6 +23,8 @@ function App() {
         return <ContactUsPage onBack={() => setCurrentPage('dashboard')} />;
       case 'assignment2':
         return <EventRegistrationPage onBack={() => setCurrentPage('dashboard')} />;
+      case 'assignment3':
+        return <ProfileWizardPage onBack={() => setCurrentPage('dashboard')} />;
       default:
         return <AssignmentDashboard onSelectAssignment={(id) => setCurrentPage(id as any)} />;
     }

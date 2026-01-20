@@ -49,8 +49,11 @@ export const AssignmentDashboard: React.FC<Props> = ({ onSelectAssignment }) => 
     {
       id: 'assignment3',
       title: 'Assignment 3: Profile Wizard (Advanced)',
-      description: 'Complexity study involving multi-step wizard, dynamic arrays, and MMKV state persistence.',
+      description: 'Complexity study involving multi-step wizard, dynamic arrays, and local storage persistence.',
       keyFiles: [
+        'src/assignment3/presentation/viewModels/useProfileViewModel.ts',
+        'src/assignment3/presentation/pages/ProfileWizardPage.tsx',
+        'src/assignment3/core/useCases/ProfileUseCases.ts',
         'src/assignment3/README.md',
       ],
       onPress: () => onSelectAssignment('assignment3'),

@@ -10,6 +10,20 @@ A professional-grade React Native repository showcasing advanced architectural p
 | :---: | :---: |
 | ![Dashboard](./README_assets/Assignement_Dashboard.png) | ![Assignment](./README_assets/Assignment_sample.png) |
 
+### GraphQL Assignments (5–8)
+
+| Assignment 5 – User Profile (Query) | Assignment 6 – Post Management (Mutations) |
+| :---: | :---: |
+| ![Assignment 5](./README_assets/assignment5.png) | ![Assignment 6](./README_assets/assignment6.png) |
+
+| Assignment 6 – Create / Edit Post Modal | Assignment 7 – Tasks (Caching & Optimistic Updates) |
+| :---: | :---: |
+| ![Assignment 6a](./README_assets/assignment6a.png) | ![Assignment 7](./README_assets/assignment7.png) |
+
+| Assignment 8 – Real-time Chat (Subscriptions) |
+| :---: |
+| ![Assignment 8](./README_assets/assignment8.png) |
+
 ---
 
 ## 🏗️ Architectural Principles
@@ -28,6 +42,11 @@ This project serves as a reference for scalable React Native applications, adher
 1.  **[Assignment 1: Contact Form](file:///src/assignment1/README.md)**: Foundation of Clean Architecture and Atomic Design with real-time validation.
 2.  **[Assignment 2: Event Registration](file:///src/assignment2/README.md)**: Intermediate UI patterns, input masking, and conditional visibility logic.
 3.  **[Assignment 3: Multi-Step Profile Builder](file:///src/assignment3/README.md)**: Advanced state persistence (MMKV), multi-step wizard logic, and complex form handling.
+4.  **Assignment 4: High-Performance Social Feed**: Virtualized list, memoization strategy, and optimistic UI for 60 FPS scrolling.
+5.  **Assignment 5: GraphQL Basics – User Profile Query**: Apollo Client `useQuery` with typed GraphQL, loading/error handling, and mock server.
+6.  **Assignment 6: GraphQL Mutations – Create/Update Posts**: `useMutation` patterns, cache updates, and form-driven workflows.
+7.  **Assignment 7: GraphQL Caching & Optimistic Updates**: Advanced cache policies, optimistic updates, and pagination.
+8.  **Assignment 8: GraphQL Subscriptions & Real-time Chat**: Real-time messaging using GraphQL (simulated subscriptions) and optimistic UX.
 
 ---
 

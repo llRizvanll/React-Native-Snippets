@@ -1,20 +1,50 @@
-# Assignment 5: Advanced UI & Micro-interactions
-
-## Topic
-Mastering Layout Animations and Gesture-based interactions.
+# Assignment 5: GraphQL Basics - User Profile Query (Basic Level)
 
 ## Problem Statement
-Build a high-performance "Media Gallery" with shared element transitions and gesture-based interactions. This assignment focuses on UI fluidity and professional-grade micro-interactions in React Native.
+Build a React Native app that displays a user profile by fetching data from a GraphQL API. This assignment introduces the fundamentals of GraphQL queries, Apollo Client setup, and TypeScript type generation.
 
-## Objectives
-- **Key Tech**: `react-native-reanimated`, `react-native-gesture-handler`.
-- **Features**: 
-    - **Shared Element Transitions**: Smooth hero image transitions between list and detail views.
-    - **Pinch-to-Zoom**: Implement pinch-to-zoom logic on images using Reanimated.
-    - **Swipe-to-Dismiss**: Gesture-based details view dismissal.
-- **Architecture**: Advanced ViewModel patterns for gesture state synchronization.
+**Requirements:**
+- Set up Apollo Client with a GraphQL endpoint
+- Create a GraphQL query to fetch user profile data (name, email, avatar, bio)
+- Display the user profile in a clean UI
+- Handle loading and error states
+- Use TypeScript with generated types from GraphQL schema
 
-## Technical Goals
-- Deep dive into `worklets` and the Reanimated UI thread.
-- Handling complex gesture states simultaneously.
-- Optimizing layout animations for a premium feel.
+## Technical Details
+
+### 1. Apollo Client Setup
+Apollo Client is the industry-standard GraphQL client for React. It provides:
+- **Automatic caching**: Queries are cached by default, reducing network requests
+- **Type safety**: With code generation, we get full TypeScript support
+- **Loading/Error states**: Built-in handling for async operations
+
+### 2. GraphQL Query Structure
+Unlike REST APIs, GraphQL allows clients to request exactly the data they need:
+```graphql
+query GetUserProfile($userId: ID!) {
+  user(id: $userId) {
+    id
+    name
+    email
+    avatar
+    bio
+  }
+}
+```
+
+### 3. Code Generation
+Using `@graphql-codegen`, we generate TypeScript types from our GraphQL schema, ensuring:
+- Type safety at compile time
+- Autocomplete in IDEs
+- Refactoring safety
+
+### 4. MVVM Pattern
+- **View**: `UserProfileView.tsx` - Pure UI component
+- **ViewModel**: `useUserProfileViewModel.ts` - Handles Apollo query hooks
+- **Model**: Generated types from GraphQL schema
+
+## Key Learning Points
+1. **GraphQL vs REST**: Understand the benefits of GraphQL's flexible querying
+2. **Apollo Client Hooks**: `useQuery` hook for fetching data
+3. **Type Safety**: Generated types prevent runtime errors
+4. **Error Handling**: Proper error boundaries and user feedback

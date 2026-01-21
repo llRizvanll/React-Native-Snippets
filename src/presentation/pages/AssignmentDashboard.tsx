@@ -72,12 +72,51 @@ export const AssignmentDashboard: React.FC<Props> = ({ onSelectAssignment }) => 
     },
     {
       id: 'assignment5',
-      title: 'Assignment 5: Advanced UI & Micro-interactions',
-      description: 'Mastering Layout Animations and Gesture-based interactions.',
+      title: 'Assignment 5: GraphQL Basics - User Profile Query',
+      description: 'Basic GraphQL query implementation with Apollo Client. Learn to fetch and display user profile data with proper loading and error states.',
       keyFiles: [
+        'src/assignment5/data/graphql/queries.ts',
+        'src/assignment5/presentation/viewModels/useUserProfileViewModel.ts',
+        'src/assignment5/presentation/pages/UserProfilePage.tsx',
         'src/assignment5/README.md',
       ],
       onPress: () => onSelectAssignment('assignment5'),
+    },
+    {
+      id: 'assignment6',
+      title: 'Assignment 6: GraphQL Mutations - Create/Update Posts',
+      description: 'Intermediate level: Implement GraphQL mutations for creating and updating posts. Learn mutation patterns, cache updates, and form handling.',
+      keyFiles: [
+        'src/assignment6/data/graphql/mutations.ts',
+        'src/assignment6/presentation/viewModels/usePostMutationsViewModel.ts',
+        'src/assignment6/presentation/pages/PostManagementPage.tsx',
+        'src/assignment6/README.md',
+      ],
+      onPress: () => onSelectAssignment('assignment6'),
+    },
+    {
+      id: 'assignment7',
+      title: 'Assignment 7: GraphQL Caching & Optimistic Updates',
+      description: 'Advanced level: Master Apollo Client caching strategies, optimistic updates, and manual cache manipulation for instant UI feedback.',
+      keyFiles: [
+        'src/assignment7/presentation/viewModels/useTaskViewModel.ts',
+        'src/assignment7/presentation/pages/TaskManagementPage.tsx',
+        'src/assignment7/data/mockServer.ts',
+        'src/assignment7/README.md',
+      ],
+      onPress: () => onSelectAssignment('assignment7'),
+    },
+    {
+      id: 'assignment8',
+      title: 'Assignment 8: GraphQL Subscriptions & Real-time Features',
+      description: 'Expert level: Implement real-time features using GraphQL subscriptions. Build a live chat system with WebSocket-based updates.',
+      keyFiles: [
+        'src/assignment8/data/graphql/subscriptions.ts',
+        'src/assignment8/presentation/viewModels/useChatViewModel.ts',
+        'src/assignment8/presentation/pages/ChatPage.tsx',
+        'src/assignment8/README.md',
+      ],
+      onPress: () => onSelectAssignment('assignment8'),
     },
   ];
 

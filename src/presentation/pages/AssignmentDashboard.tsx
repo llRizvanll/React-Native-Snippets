@@ -118,6 +118,33 @@ export const AssignmentDashboard: React.FC<Props> = ({ onSelectAssignment }) => 
       ],
       onPress: () => onSelectAssignment('assignment8'),
     },
+    {
+      id: 'assignment9',
+      title: 'Assignment 9: Atomic Design Basics',
+      description: 'Basic level: Learn the fundamentals of Atomic Design methodology. Build UI components in a hierarchical, reusable manner from atoms to templates.',
+      keyFiles: [
+        'src/assignment9/presentation/components/atoms/Avatar.tsx',
+        'src/assignment9/presentation/components/molecules/UserInfo.tsx',
+        'src/assignment9/presentation/components/organisms/UserCard.tsx',
+        'src/assignment9/presentation/components/templates/UserProfileTemplate.tsx',
+        'src/assignment9/presentation/pages/UserProfilePage.tsx',
+        'src/assignment9/README.md',
+      ],
+      onPress: () => onSelectAssignment('assignment9'),
+    },
+    {
+      id: 'assignment10',
+      title: 'Assignment 10: GraphQL User List & Search',
+      description: 'Intermediate level: Build a React Native screen that fetches users from GraphQL API, displays them in FlatList, and provides real-time search functionality with proper loading and error states.',
+      keyFiles: [
+        'src/assignment10/data/graphql/queries.ts',
+        'src/assignment10/presentation/viewModels/useUserSearchViewModel.ts',
+        'src/assignment10/presentation/pages/UserSearchPage.tsx',
+        'src/assignment10/presentation/components/molecules/UserItem.tsx',
+        'src/assignment10/README.md',
+      ],
+      onPress: () => onSelectAssignment('assignment10'),
+    },
   ];
 
   return (
